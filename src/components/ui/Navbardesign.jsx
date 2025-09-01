@@ -240,7 +240,7 @@ const NavbarDesign = ({
             ref={(el) => {
               logoRef.current = el;
             }}
-            className='rounded-full p-2 inline-flex items-center justify-center overflow-hidden w-[150px] h-[42px] bg-[#ffffff]'
+            className='rounded-full p-2 inline-flex items-center justify-center overflow-hidden w-[150px] h-[42px] '
           >
             <img
               src={logo}

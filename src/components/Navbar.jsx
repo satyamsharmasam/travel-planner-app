@@ -17,10 +17,10 @@ const Navbar = () => {
         ]}
         className='custom-nav'
         ease='power2.easeOut'
-        baseColor='white'
-        pillColor='black'
-        hoveredPillTextColor='black'
-        pillTextColor='white'
+        baseColor='black'
+        pillColor='white'
+        hoveredPillTextColor='white'
+        pillTextColor='black'
       />
     </div>
   );
