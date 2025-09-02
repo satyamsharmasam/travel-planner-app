@@ -5,7 +5,7 @@ import NavbarDesign from './ui/Navbardesign';
 
 const Navbar = () => {
   return (
-    <div className='w-full flex justify-center'>
+    <div className='w-full flex justify-center sticky top-0 z-1000 '>
       <NavbarDesign
         logo={logo}
         logoAlt='Company Logo'

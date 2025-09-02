@@ -1,10 +1,65 @@
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { gsap } from 'gsap';
 
 const Button = () => {
   const navigate = useNavigate();
   const [animating, setAnimating] = useState(false);
+  const buttonRef = useRef(null);
+  const circleRef = useRef(null);
+  const textRef = useRef(null);
+  const arrowRef = useRef(null);
+
+  useEffect(() => {
+    const mm = gsap.matchMedia();
+
+    // ✅ Mobile screen animation
+    mm.add('(max-width: 768px)', () => {
+      const tl = gsap.timeline();
+      tl.fromTo(
+        buttonRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
+      )
+        .fromTo(
+          circleRef.current,
+          { scale: 0 },
+          { scale: 1, duration: 0.5, ease: 'back.out(1.7)' },
+          '-=0.3'
+        )
+        .fromTo(
+          textRef.current,
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' },
+          '-=0.2'
+        );
+    });
+
+    // ✅ Desktop screen animation
+    mm.add('(min-width: 769px)', () => {
+      const tl = gsap.timeline();
+      tl.fromTo(
+        circleRef.current,
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.7)' }
+      )
+        .fromTo(
+          arrowRef.current,
+          { x: -20, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.4, ease: 'power3.out' },
+          '-=0.3'
+        )
+        .fromTo(
+          textRef.current,
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' },
+          '-=0.2'
+        );
+    });
+
+    return () => mm.revert();
+  }, []);
 
   const handleClick = () => {
     if (animating) return;
@@ -18,13 +73,16 @@ const Button = () => {
   return (
     <StyledWrapper>
       <button
+        ref={buttonRef}
         className={`learn-more ${animating ? 'hovered' : ''}`}
         onClick={handleClick}
       >
-        <span className='circle' aria-hidden='true'>
-          <span className='icon arrow' />
+        <span className='circle' aria-hidden='true' ref={circleRef}>
+          <span className='icon arrow' ref={arrowRef} />
         </span>
-        <span className='button-text'>Plan my Trip</span>
+        <span className='button-text' ref={textRef}>
+          Plan my Trip
+        </span>
       </button>
     </StyledWrapper>
   );
@@ -106,7 +164,6 @@ const StyledWrapper = styled.div`
     text-transform: uppercase;
   }
 
-  /* Trigger animation on click by adding hovered class */
   button.learn-more.hovered .circle {
     width: 100%;
   }
@@ -120,7 +177,6 @@ const StyledWrapper = styled.div`
     color: #fff;
   }
 
-  /* Optional: regular hover for desktop */
   button.learn-more:hover .circle {
     width: 100%;
   }
