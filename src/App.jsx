@@ -4,10 +4,8 @@ import Home from './components/pages/Home';
 function App() {
   return (
     <>
-      <div className='px-2'>
-        <Navbar />
-        <Outlet />
-      </div>
+      <Navbar />
+      <Outlet />
     </>
   );
 }

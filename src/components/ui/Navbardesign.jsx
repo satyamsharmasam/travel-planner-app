@@ -397,7 +397,7 @@ const NavbarDesign = ({
 
       <div
         ref={mobileMenuRef}
-        className='md:hidden absolute top-[3em] left-4 right-4 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] z-[998] origin-top mt-4'
+        className='md:hidden absolute top-[3em] left-4 right-4 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] z-[998] origin-top mt-3'
         style={{
           ...cssVars,
           background: 'var(--base, #f0f0f0)',
