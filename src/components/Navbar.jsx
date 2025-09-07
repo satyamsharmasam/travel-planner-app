@@ -1,6 +1,4 @@
-// import { useState } from 'react';
 import logo from '../assets/logo.png';
-// import { NavLink } from 'react-router-dom';
 import NavbarDesign from './ui/Navbardesign';
 
 const Navbar = () => {
