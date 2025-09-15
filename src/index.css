@@ -132,6 +132,14 @@
     -webkit-backdrop-filter: blur(10.1px);
     padding-inline: 10px;
   }
+  .gradient-text {
+    background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 700;
+  }
   @keyframes float {
     0%,
     100% {

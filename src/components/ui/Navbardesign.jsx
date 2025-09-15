@@ -22,7 +22,6 @@ const NavbarDesign = ({
   const tlRefs = useRef([]);
   const activeTweenRefs = useRef([]);
   const logoImgRef = useRef(null);
-  // const logoTweenRef = useRef(null);
   const hamburgerRef = useRef(null);
   const mobileMenuRef = useRef(null);
   const navItemsRef = useRef(null);
@@ -204,6 +203,33 @@ const NavbarDesign = ({
     onMobileMenuClick?.();
   };
 
+  // 🔹 naya function
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+
+    const hamburger = hamburgerRef.current;
+    const menu = mobileMenuRef.current;
+
+    if (hamburger) {
+      const lines = hamburger.querySelectorAll('.hamburger-line');
+      gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
+      gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
+    }
+
+    if (menu) {
+      gsap.to(menu, {
+        opacity: 0,
+        y: 10,
+        duration: 0.2,
+        ease,
+        transformOrigin: 'top center',
+        onComplete: () => {
+          gsap.set(menu, { visibility: 'hidden' });
+        },
+      });
+    }
+  };
+
   const isExternalLink = (href) =>
     href.startsWith('http://') ||
     href.startsWith('https://') ||
@@ -226,7 +252,7 @@ const NavbarDesign = ({
   };
 
   return (
-    <div className='w-full left-0 justify-center md:left-auto flex  glass-card'>
+    <div className='w-full left-0 justify-center md:left-auto flex glass-card'>
       <nav
         className={`w-full md:w-max flex items-center justify-between md:justify-start box-border py-2 md:px-0  ${className} sticky`}
         aria-label='Primary'
@@ -272,6 +298,7 @@ const NavbarDesign = ({
           </a>
         )}
 
+        {/* desktop nav */}
         <div
           ref={navItemsRef}
           className='relative items-center rounded-full hidden md:flex ml-2 '
@@ -372,6 +399,7 @@ const NavbarDesign = ({
           </ul>
         </div>
 
+        {/* mobile hamburger */}
         <button
           ref={hamburgerRef}
           onClick={toggleMobileMenu}
@@ -395,6 +423,7 @@ const NavbarDesign = ({
         </button>
       </nav>
 
+      {/* mobile menu */}
       <div
         ref={mobileMenuRef}
         className='md:hidden absolute top-[3em] left-4 right-4 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] z-[998] origin-top mt-3'
@@ -430,7 +459,7 @@ const NavbarDesign = ({
                     style={defaultStyle}
                     onMouseEnter={hoverIn}
                     onMouseLeave={hoverOut}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={closeMobileMenu}
                   >
                     {item.label}
                   </Link>
@@ -441,7 +470,7 @@ const NavbarDesign = ({
                     style={defaultStyle}
                     onMouseEnter={hoverIn}
                     onMouseLeave={hoverOut}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={closeMobileMenu}
                   >
                     {item.label}
                   </a>

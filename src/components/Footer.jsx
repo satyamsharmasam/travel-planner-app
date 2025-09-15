@@ -11,7 +11,7 @@ const Footer = () => {
         <ul className='mt-5 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12'>
           <li>
             <Link
-              className='text-gray-700 transition hover:text-gray-700/75'
+              className='text-gray-700 transition hover:text-gray-700/50'
               to={'/'}
             >
               Home
@@ -20,7 +20,7 @@ const Footer = () => {
 
           <li>
             <Link
-              className='text-gray-700 transition hover:text-gray-700/75'
+              className='text-gray-700 transition hover:text-gray-700/50'
               to={'/plantrip'}
             >
               Plan Trip
@@ -29,7 +29,7 @@ const Footer = () => {
 
           <li>
             <Link
-              className='text-gray-700 transition hover:text-gray-700/75'
+              className='text-gray-700 transition hover:text-gray-700/50'
               to={'about'}
             >
               About
@@ -38,7 +38,7 @@ const Footer = () => {
 
           <li>
             <Link
-              className='text-gray-700 transition hover:text-gray-700/75'
+              className='text-gray-700 transition hover:text-gray-700/50'
               to={'contact'}
             >
               Contact

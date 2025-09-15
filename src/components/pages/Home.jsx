@@ -104,11 +104,11 @@ const Home = () => {
     <>
       <HeroSection />
       <div className='my-10 text-center text-5xl px-2 w-full h-[calc(100dvh-50px)] flex items-center justify-center '>
-        <h2 className='text-[30px] md:text-5xl font-semibold'>
+        <h2 className=' text-6xl font-semibold'>
           Dream destinations, just a{' '}
           <Link
             to={'/plantrip'}
-            className='text-[#ff9225] animate-pulse inline-block'
+            className='text-[#ff9225] animate-pulse  inline-block'
           >
             click
           </Link>{' '}
