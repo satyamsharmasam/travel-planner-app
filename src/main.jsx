@@ -3,13 +3,13 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import Home from './components/pages/Home';
 import PlanTrip from './components/pages/PlanTrip';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Itinerary from './components/pages/Itinerary';
-
+import { store } from '../redux/store.js';
+import { Provider } from 'react-redux';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -41,6 +41,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>
 );

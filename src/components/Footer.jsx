@@ -46,7 +46,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div f>
+      <div>
         <hr />
         <p className='text-center text-sm text-gray-500 mt-5 pb-5'>
           &copy; {new Date().getFullYear()} Journezy. All rights reserved.

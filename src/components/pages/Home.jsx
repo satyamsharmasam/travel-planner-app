@@ -99,12 +99,13 @@ It’s a top romantic and cultural destination in Europe.`,
     ),
   },
 ];
+
 const Home = () => {
   return (
     <>
       <HeroSection />
       <div className='my-10 text-center text-5xl px-2 w-full h-[calc(100dvh-50px)] flex items-center justify-center '>
-        <h2 className=' text-6xl font-semibold'>
+        <h2 className=' text-5xl font-semibold'>
           Dream destinations, just a{' '}
           <Link
             to={'/plantrip'}
