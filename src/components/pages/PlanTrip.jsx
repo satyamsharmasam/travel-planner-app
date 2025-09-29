@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import tripVideo from '../../assets/tripV.mp4';
+import tripVideo from '/tripV.mp4';
 import { useGenerateItineraryMutation } from '../../../redux/services/apiSlice';
 import { GiTempleDoor } from 'react-icons/gi';
 import {

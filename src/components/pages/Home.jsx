@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import HeroSection from '../HeroSection';
 import { StickyScroll } from '../ui/sticky-scroll-reveal';
-import visit1 from '../../assets/visit1.jpg';
-import visit2 from '../../assets/visit2.jpg';
-import visit3 from '../../assets/visit3.jpg';
-import visit4 from '../../assets/visit4.jpg';
-import visit5 from '../../assets/visit5.jpg';
+import visit1 from '/visit1.jpg';
+import visit2 from '/visit2.jpg';
+import visit3 from '/visit3.jpg';
+import visit4 from '/visit4.jpg';
+import visit5 from '/visit5.jpg';
 
 const content = [
   {
