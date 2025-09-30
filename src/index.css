@@ -126,8 +126,9 @@
     /* background: white; */
   }
   .glass-card {
-    background: rgba(255, 255, 255, 0.06);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.06); /* thoda semi-transparent */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari ke liye */
   }
 
   .gradient-text {
