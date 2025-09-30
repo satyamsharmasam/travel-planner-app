@@ -252,7 +252,7 @@ const NavbarDesign = ({
   };
 
   return (
-    <div className='w-full left-0 justify-center md:left-auto flex glass-card'>
+    <div className='w-full left-0 justify-center md:left-auto flex '>
       <nav
         className={`w-full md:w-max flex items-center justify-between md:justify-start box-border py-2 md:px-0  ${className} sticky`}
         aria-label='Primary'

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import tripVideo from '/tripV.mp4';
 import { useGenerateItineraryMutation } from '../../../redux/services/apiSlice';
 import { GiTempleDoor } from 'react-icons/gi';
 import {
@@ -97,7 +96,7 @@ const TripPlannerForm = () => {
             playsInline
             preload='auto'
           >
-            <source src={tripVideo} type='video/mp4' />
+            <source src='/tripV.mp4' type='video/mp4' />
           </video>
         </div>
         <div className='absolute inset-0 bg-black/20'></div>

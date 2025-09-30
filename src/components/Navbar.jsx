@@ -1,11 +1,10 @@
-import logo from '../assets/logo.png';
 import NavbarDesign from './ui/Navbardesign';
 
 const Navbar = () => {
   return (
-    <div className='w-full flex justify-center sticky top-0 z-1000 '>
+    <div className='w-full flex justify-center sticky top-0 z-1000 glass-card'>
       <NavbarDesign
-        logo={logo}
+        logo='/images/logo.png'
         logoAlt='Company Logo'
         items={[
           { label: 'Home', href: '/' },

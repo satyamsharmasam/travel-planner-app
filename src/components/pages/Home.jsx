@@ -1,11 +1,6 @@
 import { Link } from 'react-router-dom';
 import HeroSection from '../HeroSection';
 import { StickyScroll } from '../ui/sticky-scroll-reveal';
-import visit1 from '/visit1.jpg';
-import visit2 from '/visit2.jpg';
-import visit3 from '/visit3.jpg';
-import visit4 from '/visit4.jpg';
-import visit5 from '/visit5.jpg';
 
 const content = [
   {
@@ -17,7 +12,7 @@ It’s a blend of culture, adventure, and natural beauty.`,
     content: (
       <div className='flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white'>
         <img
-          src={visit1}
+          src='/images/visit1.jpg'
           width={400}
           height={300}
           className='h-full w-full object-cover'
@@ -35,7 +30,7 @@ The city mixes Arabian culture with futuristic lifestyle`,
     content: (
       <div className='flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white'>
         <img
-          src={visit2}
+          src='/images/visit2.jpg'
           width={300}
           height={300}
           className='h-full w-full object-cover'
@@ -53,7 +48,7 @@ It’s a world-famous honeymoon and luxury destination`,
     content: (
       <div className='flex h-full w-full items-center justify-center text-white'>
         <img
-          src={visit3}
+          src='/images/visit3.jpg'
           width={300}
           height={300}
           className='h-full w-full object-cover'
@@ -71,7 +66,7 @@ It blends Thai culture with modern skyscrapers`,
     content: (
       <div className='flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white'>
         <img
-          src={visit4}
+          src='/images/visit4.jpg'
           width={300}
           height={300}
           className='h-full w-full object-cover'
@@ -89,7 +84,7 @@ It’s a top romantic and cultural destination in Europe.`,
     content: (
       <div className='flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white'>
         <img
-          src={visit5}
+          src='/images/visit5.jpg'
           width={300}
           height={300}
           className='h-full w-full object-cover'

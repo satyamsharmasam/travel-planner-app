@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png';
 const Footer = () => {
   return (
     <footer>
       <div className='mx-auto max-w-5xl px-4 py-5 sm:px-6 lg:px-8 '>
         <div className='flex justify-center '>
-          <img src={logo} alt='' className='w-[200px]' />
+          <img src='/images/logo.png' alt='' className='w-[200px]' />
         </div>
 
         <ul className='mt-5 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12'>

@@ -1,12 +1,11 @@
 import Button from './ui/Button';
 import SplitText from './ui/welcomeText';
-import HeroBg from '../assets/HeroBg.png';
 
 const HeroSection = () => {
   return (
     <div className='relative'>
       <img
-        src={HeroBg}
+        src='/images/HeroBg.png'
         alt='Background Decoration Right'
         className='absolute bottom-0  w-full object-contain'
       />
