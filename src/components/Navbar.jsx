@@ -2,7 +2,7 @@ import NavbarDesign from './ui/Navbardesign';
 
 const Navbar = () => {
   return (
-    <div className='w-full flex justify-center sticky top-0 z-[1000] glass-card'>
+    <div className='w-full flex justify-center sticky top-0 z-[1000] glass-card px-2'>
       <NavbarDesign
         logo='/images/logo.png'
         logoAlt='Company Logo'

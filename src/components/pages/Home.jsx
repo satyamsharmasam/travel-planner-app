@@ -104,7 +104,7 @@ const Home = () => {
           Dream destinations, just a{' '}
           <Link
             to={'/plantrip'}
-            className='text-[#ff9225] animate-pulse  inline-block'
+            className='text-[#067d79] animate-pulse  inline-block'
           >
             click
           </Link>{' '}

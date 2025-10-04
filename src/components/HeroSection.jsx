@@ -13,7 +13,7 @@ const HeroSection = () => {
       {/* Foreground Content */}
       <div className='h-[calc(100dvh-50px)] flex items-center justify-center overflow-hidden flex-col'>
         <SplitText
-          text='Journezy: Where AI guides your adventure!'
+          text='Journezy: Where  AI guides your adventure!'
           className='text-[40px] md:text-7xl font-semibold  leading-snug md:leading-normal '
           delay={100}
           duration={0.6}

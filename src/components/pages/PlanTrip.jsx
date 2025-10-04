@@ -12,6 +12,7 @@ import {
   FaUmbrellaBeach,
   FaGlassCheers,
   FaChevronDown,
+  FaMapMarkerAlt,
   FaLandmark,
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -57,10 +58,6 @@ const TripPlannerForm = () => {
     {
       q: 'Can I share my itinerary with friends?',
       a: 'Absolutely! You can share via a link.',
-    },
-    {
-      q: 'Do you provide recommendations for activities?',
-      a: 'Yes, based on your interests.',
     },
   ]);
 
@@ -119,15 +116,18 @@ const TripPlannerForm = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Destination */}
           <div className='relative mb-6'>
-            <label>Destination</label>
+            <label className='flex items-center gap-2  font-medium mb-2'>
+              <FaMapMarkerAlt className='text-[#067d79]' />
+              Destination
+            </label>
             <input
               type='text'
               {...register('destination', { required: 'Destination required' })}
               placeholder='Type destination'
-              className='w-full border rounded-lg px-4 py-2'
+              className='w-full border  rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#067d79]'
             />
             {errors.destination && (
-              <p className='text-red-500 text-sm'>
+              <p className='text-[#ff2f00] text-xs mt-1'>
                 {errors.destination.message}
               </p>
             )}
@@ -136,13 +136,13 @@ const TripPlannerForm = () => {
           {/* Travel Dates */}
           <div className='mb-6 grid grid-cols-1 md:grid-cols-2 gap-4'>
             <div>
-              <label className='flex items-center gap-2 text-gray-700 font-medium mb-2'>
-                <FaCalendarAlt className='text-[#FE9836]' /> From Date
+              <label className='flex items-center gap-2  font-medium mb-2'>
+                <FaCalendarAlt className='text-[#067d79]' /> From Date
               </label>
               <input
                 type='date'
                 {...register('fromDate', { required: 'From date is required' })}
-                className='w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE9836]'
+                className='w-full border  rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#067d79]'
               />
               {errors.fromDate && (
                 <p className='text-[#ff2f00] text-xs mt-1'>
@@ -150,14 +150,15 @@ const TripPlannerForm = () => {
                 </p>
               )}
             </div>
+
             <div>
-              <label className='flex items-center gap-2 text-gray-700 font-medium mb-2'>
-                <FaCalendarAlt className='text-[#FE9836]' /> To Date
+              <label className='flex items-center gap-2 font-medium mb-2'>
+                <FaCalendarAlt className='text-[#067d79]' /> To Date
               </label>
               <input
                 type='date'
                 {...register('toDate', { required: 'To date is required' })}
-                className='w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE9836]'
+                className='w-full border  rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#067d79]'
               />
               {errors.toDate && (
                 <p className='text-[#ff2f00] text-xs mt-1'>
@@ -170,7 +171,7 @@ const TripPlannerForm = () => {
           {/* Budget */}
           <div className='my-6'>
             <label className='flex items-center gap-2 font-medium text-gray-700 mb-2'>
-              <FaDollarSign className='text-[#FE9836]' /> Your Budget
+              <FaDollarSign className='text-[#067d79]' /> Your Budget
             </label>
             <div className='relative'>
               <span className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-500'>
@@ -183,7 +184,7 @@ const TripPlannerForm = () => {
                   required: 'Budget is required',
                   min: 1000,
                 })}
-                className='w-full border rounded-lg pl-8 py-2 focus:outline-none focus:ring-2 focus:ring-[#FE9836]'
+                className='w-full border rounded-lg pl-8 py-2 focus:outline-none focus:ring-2 focus:ring-[#067d79]'
               />
               {errors.budget && (
                 <p className='text-[#ff2f00] text-xs mt-1'>
@@ -218,7 +219,7 @@ const TripPlannerForm = () => {
                     })}
                     className='hidden peer'
                   />
-                  <div className='w-20 h-20 flex flex-col items-center justify-center gap-1 border rounded-lg text-gray-600 transition hover:bg-[#FE9836]/10 peer-checked:bg-[#FE9836] peer-checked:text-white'>
+                  <div className='w-20 h-20 flex flex-col items-center justify-center gap-1 border rounded-lg text-gray-600 transition hover:bg-[#067d79]/20 peer-checked:bg-[#067d79] peer-checked:text-white'>
                     <span className='text-lg'>{interest.icon}</span>
                     <span className='text-xs'>{interest.label}</span>
                   </div>
@@ -236,11 +237,13 @@ const TripPlannerForm = () => {
           <button
             type='submit'
             disabled={isLoading}
-            className='w-full bg-[#FE9836] hover:bg-[#e57d1c] text-white mt-5 py-3 rounded-lg font-medium transition'
+            className='w-full bg-[#067d79] hover:bg-[#006865] cursor-pointer text-white mt-5 py-3 rounded-lg font-medium transition'
           >
             {isLoading ? 'Generating...' : 'Generate Itinerary ✨'}
           </button>
-          {error && <p className='text-red-500'>Error generating itinerary</p>}
+          {error && (
+            <p className='text-[#ff2f00]'>Error generating itinerary</p>
+          )}
         </form>
       </section>
 
@@ -262,7 +265,7 @@ const TripPlannerForm = () => {
                   <FaChevronDown
                     className={`transform transition-transform duration-300 ${
                       openIndex === i
-                        ? 'rotate-180 text-[#FE9836]'
+                        ? 'rotate-180 text-[#067d79]'
                         : 'rotate-0 text-gray-500'
                     }`}
                   />

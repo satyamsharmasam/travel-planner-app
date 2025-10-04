@@ -55,6 +55,12 @@ const Card = ({ plan }) => {
   // Weather icon logic
   const getWeatherIcon = (weather) => {
     if (!weather) return null;
+
+    if (weather.includes('rain')) {
+      weather.toLowerCase();
+      return <Cloud className='w-4 h-4 sm:w-5 sm:h-5 text-gray-500' />;
+    }
+
     switch (weather.toLowerCase()) {
       case 'sunny':
         return <Sun className='w-4 h-4 sm:w-5 sm:h-5 text-yellow-500' />;
@@ -97,7 +103,7 @@ const Card = ({ plan }) => {
           <Box>
             <BoxHeader>
               <BoxTitle className='flex items-center gap-2 text-sm sm:text-base'>
-                <MapPin className='w-4 h-4 sm:w-5 sm:h-5 text-red-500' />{' '}
+                <MapPin className='w-4 h-4 text-red-500 flex-shrink-0' />
                 Attractions
               </BoxTitle>
             </BoxHeader>
@@ -108,7 +114,7 @@ const Card = ({ plan }) => {
                     key={idx}
                     className='flex items-center gap-2 text-xs sm:text-sm font-medium'
                   >
-                    <MapPin className='w-3 h-3 sm:w-4 sm:h-4 text-red-400' />
+                    <MapPin className='w-3 h-3 text-red-400 flex-shrink-0' />
                     {a.place}{' '}
                     <span className='text-gray-500 text-[10px] sm:text-xs'>
                       ({a.time})

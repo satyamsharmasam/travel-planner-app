@@ -1,55 +1,61 @@
 import { Link } from 'react-router-dom';
+
 const Footer = () => {
   return (
-    <footer>
-      <div className='mx-auto max-w-5xl px-4 py-5 sm:px-6 lg:px-8 '>
-        <div className='flex justify-center '>
-          <img src='/images/logo.png' alt='' className='w-[200px]' />
-        </div>
+    <footer className='bg-white/70 backdrop-blur-xl rounded-2xl shadow-lg dark:bg-gray-900/50 m-4'>
+      <div className='w-full max-w-screen-xl mx-auto p-6 md:py-8'>
+        <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-0'>
+          {/* Logo */}
+          <Link
+            to='/'
+            className='flex items-center space-x-3 rtl:space-x-reverse'
+          >
+            <img src='/images/logo.png' className='h-10' alt='Journezy Logo' />
+          </Link>
 
-        <ul className='mt-5 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12'>
-          <li>
+          {/* Navigation Links */}
+          <div className='flex flex-wrap items-center gap-6 text-sm font-medium text-gray-700 dark:text-gray-300'>
             <Link
-              className='text-gray-700 transition hover:text-gray-700/50'
-              to={'/'}
+              to='/'
+              className='hover:text-[#067d79] transition-colors duration-300'
             >
               Home
             </Link>
-          </li>
-
-          <li>
             <Link
-              className='text-gray-700 transition hover:text-gray-700/50'
-              to={'/plantrip'}
+              to='/planTrip'
+              className='hover:text-[#067d79] transition-colors duration-300'
             >
               Plan Trip
             </Link>
-          </li>
-
-          <li>
             <Link
-              className='text-gray-700 transition hover:text-gray-700/50'
-              to={'about'}
+              to='/about'
+              className='hover:text-[#067d79] transition-colors duration-300'
             >
               About
             </Link>
-          </li>
-
-          <li>
             <Link
-              className='text-gray-700 transition hover:text-gray-700/50'
-              to={'contact'}
+              to='/contact'
+              className='hover:text-[#067d79] transition-colors duration-300'
             >
               Contact
             </Link>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <hr />
-        <p className='text-center text-sm text-gray-500 mt-5 pb-5'>
-          &copy; {new Date().getFullYear()} Journezy. All rights reserved.
-        </p>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <hr className='my-6 border-gray-300 dark:border-gray-700' />
+
+        {/* Copyright */}
+        <span className='block text-sm md:text-base text-gray-600 sm:text-center dark:text-gray-400'>
+          &copy; {new Date().getFullYear()}{' '}
+          <Link
+            to='/'
+            className='font-semibold hover:text-[#067d79] transition-colors duration-300'
+          >
+            Journezy™
+          </Link>
+          . All rights reserved.
+        </span>
       </div>
     </footer>
   );

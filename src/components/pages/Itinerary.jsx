@@ -78,7 +78,7 @@ const Itinerary = () => {
       <SavePdfButton targetRef={itineraryRef} fileName='my_itinerary.pdf' />
 
       <button
-        className='w-full bg-[#FE9836] hover:bg-[#e57d1c] text-white mt-5 py-3 rounded-lg font-medium transition cursor-pointer text-sm sm:text-base'
+        className='w-full bg-[#067d79] hover:bg-[#006865] text-white mt-5 py-3 rounded-lg font-medium transition cursor-pointer text-sm sm:text-base'
         onClick={() => navigate('/planTrip')}
       >
         Update
