@@ -12,11 +12,12 @@ It’s a blend of culture, adventure, and natural beauty.`,
     content: (
       <div className='flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white'>
         <img
-          src='/images/visit1.jpg'
+          src='/images/visit1.webp'
           width={400}
           height={300}
           className='h-full w-full object-cover'
           alt='linear board demo'
+          loading='lazy'
         />
       </div>
     ),
@@ -30,11 +31,12 @@ The city mixes Arabian culture with futuristic lifestyle`,
     content: (
       <div className='flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white'>
         <img
-          src='/images/visit2.jpg'
+          src='/images/visit2.webp'
           width={300}
           height={300}
           className='h-full w-full object-cover'
           alt='linear board demo'
+          loading='lazy'
         />
       </div>
     ),
@@ -48,11 +50,12 @@ It’s a world-famous honeymoon and luxury destination`,
     content: (
       <div className='flex h-full w-full items-center justify-center text-white'>
         <img
-          src='/images/visit3.jpg'
+          src='/images/visit3.webp'
           width={300}
           height={300}
           className='h-full w-full object-cover'
           alt='linear board demo'
+          loading='lazy'
         />
       </div>
     ),
@@ -66,11 +69,12 @@ It blends Thai culture with modern skyscrapers`,
     content: (
       <div className='flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white'>
         <img
-          src='/images/visit4.jpg'
+          src='/images/visit4.webp'
           width={300}
           height={300}
           className='h-full w-full object-cover'
           alt='linear board demo'
+          loading='lazy'
         />
       </div>
     ),
@@ -84,11 +88,12 @@ It’s a top romantic and cultural destination in Europe.`,
     content: (
       <div className='flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white'>
         <img
-          src='/images/visit5.jpg'
+          src='/images/visit5.webp'
           width={300}
           height={300}
           className='h-full w-full object-cover'
           alt='linear board demo'
+          loading='lazy'
         />
       </div>
     ),

@@ -5,9 +5,10 @@ const HeroSection = () => {
   return (
     <div className='relative'>
       <img
-        src='/images/HeroBg.png'
+        src='/images/HeroBg.webp'
         alt='Background Decoration Right'
         className='absolute bottom-0  w-full object-contain'
+        loading='lazy'
       />
 
       {/* Foreground Content */}
