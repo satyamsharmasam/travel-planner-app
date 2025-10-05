@@ -92,7 +92,6 @@ const TripPlannerForm = () => {
             loop
             playsInline
             preload='metadata'
-            loading='lazy'
           >
             <source src='/tripV.mp4' type='video/mp4' />
           </video>
