@@ -61,6 +61,7 @@ const InfiniteScrollCards = () => {
                 src={review.img}
                 alt={review.name}
                 className='w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 border-gray-700 object-cover'
+                loading='lazy'
               />
               <div>
                 <h3 className='font-bold text-base sm:text-lg md:text-xl'>

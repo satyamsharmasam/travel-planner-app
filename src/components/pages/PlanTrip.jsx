@@ -82,30 +82,78 @@ const TripPlannerForm = () => {
 
   return (
     <div className='w-full'>
-      {/* Hero Section */}
-      <section className='relative h-[70vh] flex items-center justify-center text-white overflow-hidden'>
+      {/* HERO SECTION */}
+      <section className='relative h-[73vh] w-full flex items-center justify-center overflow-hidden'>
+        {/* Background */}
         <div className='absolute inset-0'>
-          <video
-            className='absolute inset-0 w-full h-dvh object-cover'
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload='metadata'
-          >
-            <source src='/tripV.mp4' type='video/mp4' />
-          </video>
+          <img
+            src='/images/mountains.webp'
+            alt='Luxury Travel Destination'
+            className='w-full h-full object-cover animate-bgDrift'
+          />
+          <div className='absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent' />
         </div>
-        <div className='absolute inset-0 bg-black/20'></div>
+
+        {/* Soft Glow */}
+        <div className='absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#00a7a1]/25 blur-[150px] rounded-full animate-softPulse pointer-events-none'></div>
+
+        {/* Text */}
         <div className='relative z-10 text-center px-6'>
-          <h1 className='text-[42px] md:text-8xl font-extrabold mb-4'>
-            Plan Your Perfect Trip
+          <h1 className='text-white text-6xl md:text-7xl font-extrabold  leading-tight animate-fadeUp'>
+            Plan Your{' '}
+            <span className='text-transparent bg-clip-text bg-gradient-to-r from-[#06b2ae] to-[#024e4c]'>
+              Perfect Trip
+            </span>
           </h1>
-          <p className='text-xs md:text-xl mb-6'>
+          <p className='text-white/80 text-base md:text-xl max-w-2xl mx-auto leading-relaxed animate-fadeUp delay-300'>
             Tell us about your dream destination and we'll create a personalized
             itinerary
           </p>
         </div>
+
+        {/* Animations */}
+        <style>{`
+    @keyframes bgDrift {
+      0% { transform: scale(1.05) translateY(0); }
+      50% { transform: scale(1.1) translateY(-10px); }
+      100% { transform: scale(1.05) translateY(0); }
+    }
+    .animate-bgDrift {
+      animation: bgDrift 10s ease-in-out infinite;
+    }
+
+    @keyframes softPulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.08); }
+    }
+    .animate-softPulse {
+      animation: softPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeUp {
+      animation: fadeUp 1.2s ease forwards;
+    }
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+  `}</style>
+      </section>
+
+      {/* FORM SECTION */}
+      <section
+        id='trip-form'
+        className='
+    relative z-20
+    -mt-12 md:-mt-20 lg:-mt-24
+    px-4 md:px-8
+    transition-all duration-500
+  '
+      >
+        {/* your form content here */}
       </section>
 
       {/* Trip Form */}
@@ -113,7 +161,7 @@ const TripPlannerForm = () => {
         id='trip-form'
         className='max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-lg -mt-20 relative z-20'
       >
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} id='form'>
           {/* Destination */}
           <div className='relative mb-6'>
             <label className='flex items-center gap-2  font-medium mb-2'>

@@ -42,32 +42,44 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --animate-line-shadow: line-shadow 15s linear infinite;
   @keyframes line-shadow {
-  0% {
-    background-position: 0 0;
+    0% {
+      background-position: 0 0;
     }
-  100% {
-    background-position: 100% -100%;
+    100% {
+      background-position: 100% -100%;
     }
   }
-  --animate-shiny-text: shiny-text 8s infinite
-;
+  --animate-shiny-text: shiny-text 8s infinite;
   @keyframes shiny-text {
-  0%, 90%, 100% {
-    background-position: calc(-100% - var(--shiny-width)) 0;}
-  30%, 60% {
-    background-position: calc(100% + var(--shiny-width)) 0;}}
+    0%,
+    90%,
+    100% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+    30%,
+    60% {
+      background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   @keyframes marquee {
-  from {
-    transform: translateX(0);}
-  to {
-    transform: translateX(calc(-100% - var(--gap)));}}
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);}
-  to {
-    transform: translateY(calc(-100% - var(--gap)));}}}
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+}
 
 :root {
   --radius: 0.625rem;
@@ -146,16 +158,19 @@
     @apply bg-background text-foreground;
   }
 }
+@layer utilities {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.06) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+}
 
 @layer base {
   body {
     font-family: 'Poppins', sans-serif;
     /* background: white; */
-  }
-  .glass-card {
-    background: rgba(255, 255, 255, 0.06); /* thoda semi-transparent */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Safari ke liye */
   }
 
   .gradient-text {
@@ -187,5 +202,17 @@
 
   .animate-shine {
     animation: shine 5s linear infinite;
+  }
+
+  @keyframes slowZoom {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.1);
+    }
+  }
+  .animate-slowZoom {
+    animation: slowZoom 20s ease-in-out infinite alternate;
   }
 }

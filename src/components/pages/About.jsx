@@ -1,8 +1,8 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Plane, Map, Calendar, Wallet } from 'lucide-react';
-import InfiniteScrollCards from '../Reviews';
 import { Link } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+const InfiniteScrollCards = lazy(() => import('../Reviews'));
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
@@ -101,7 +101,9 @@ export default function AboutBreathingFull() {
             about their journeys.
           </p>
         </motion.div>
-        <InfiniteScrollCards />
+        <Suspense fallback={<div>Loading reviews...</div>}>
+          <InfiniteScrollCards />
+        </Suspense>
       </section>
 
       {/* Call to Action */}

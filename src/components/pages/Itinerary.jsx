@@ -75,7 +75,9 @@ const Itinerary = () => {
         </div>
       </div>
 
-      <SavePdfButton targetRef={itineraryRef} fileName='my_itinerary.pdf' />
+      <Suspense fallback={<div>Loading Save Pdf Button...</div>}>
+        <SavePdfButton targetRef={itineraryRef} fileName='my_itinerary.pdf' />
+      </Suspense>
 
       <button
         className='w-full bg-[#067d79] hover:bg-[#006865] text-white mt-5 py-3 rounded-lg font-medium transition cursor-pointer text-sm sm:text-base'
