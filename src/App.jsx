@@ -5,10 +5,10 @@ import ScrollTop from './components/ScrollTop';
 function App() {
   return (
     <>
-      <ScrollTop />
-      <Navbar />
+      {/* <ScrollTop />
+      <Navbar /> */}
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

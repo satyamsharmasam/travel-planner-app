@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Card from '../Card';
 import { AlertTriangle } from 'lucide-react';
 import SavePdfButton from '../SaveItineraryButton';
-import { useRef } from 'react';
+import { Suspense, useRef } from 'react';
 
 const Itinerary = () => {
   const itineraryRef = useRef();

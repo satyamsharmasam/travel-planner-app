@@ -57,7 +57,7 @@ const TripPlannerForm = () => {
     },
     {
       q: 'Can I share my itinerary with friends?',
-      a: 'Absolutely! You can share via a link.',
+      a: 'Absolutely! You can share via PDF.',
     },
   ]);
 
@@ -288,7 +288,9 @@ const TripPlannerForm = () => {
             disabled={isLoading}
             className='w-full bg-[#067d79] hover:bg-[#006865] cursor-pointer text-white mt-5 py-3 rounded-lg font-medium transition'
           >
-            {isLoading ? 'Generating...' : 'Generate Itinerary ✨'}
+            {isLoading
+              ? 'Generating... (wait few seconds)'
+              : 'Generate Itinerary ✨'}
           </button>
           {error && (
             <p className='text-[#ff2f00]'>Error generating itinerary</p>
