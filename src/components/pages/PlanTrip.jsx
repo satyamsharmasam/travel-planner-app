@@ -90,6 +90,7 @@ const TripPlannerForm = () => {
             src='/images/mountains.webp'
             alt='Luxury Travel Destination'
             className='w-full h-full object-cover animate-bgDrift'
+            preload='auto'
           />
           <div className='absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent' />
         </div>
@@ -99,7 +100,7 @@ const TripPlannerForm = () => {
 
         {/* Text */}
         <div className='relative z-10 text-center px-6'>
-          <h1 className='text-white text-6xl md:text-7xl font-extrabold  leading-tight animate-fadeUp'>
+          <h1 className='text-white text-5xl md:text-7xl font-extrabold  leading-tight animate-fadeUp'>
             Plan Your{' '}
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-[#06b2ae] to-[#024e4c]'>
               Perfect Trip
