@@ -19,7 +19,7 @@ export default function AboutBreathingFull() {
   return (
     <div
       style={breathingBackground}
-      className='w-full min-h-screen font-sans text-[#067d79] overflow-hidden py-24'
+      className='w-full min-h-screen text-[#067d79] overflow-hidden py-24'
     >
       <style>
         {`
@@ -39,7 +39,7 @@ export default function AboutBreathingFull() {
           transition={{ duration: 1 }}
           className='relative z-10 text-center px-4'
         >
-          <h1 className='text-5xl md:text-6xl font-extrabold drop-shadow-lg'>
+          <h1 className='text-5xl md:text-6xl font-extrabold drop-shadow-lg '>
             About Journezy
           </h1>
           <p className='mt-4 md:mt-6 text-lg md:text-xl max-w-2xl mx-auto text-gray-700'>

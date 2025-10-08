@@ -33,7 +33,7 @@ const SavePdfButton = ({ targetRef, fileName = 'itinerary.pdf' }) => {
   return (
     <button
       onClick={handleSavePdf}
-      className=' bg-[#DC143C] w-full text-white px-4 font-medium rounded-lg py-3 text-sm sm:text-base cursor-pointer'
+      className=' bg-[#c90000]/80 hover:bg-[#c90000de] w-full text-white px-4 font-medium rounded-lg py-3 text-sm sm:text-base cursor-pointer'
     >
       Download PDF
     </button>

@@ -24,7 +24,7 @@ const Itinerary = () => {
         </div>
         <button
           onClick={() => navigate('/planTrip')}
-          className='mt-4 px-4 py-2 bg-[#FE9836] text-white rounded cursor-pointer text-sm sm:text-base'
+          className='mt-4 px-4 py-2 bg-[#028e89]  text-white rounded cursor-pointer text-sm sm:text-base'
         >
           Go Back
         </button>
@@ -37,10 +37,11 @@ const Itinerary = () => {
   return (
     <div className='max-w-3xl mx-auto p-6'>
       <div ref={itineraryRef} className=' m-0 md:my-5  pb-4'>
-        <h1 className='text-xl sm:text-2xl md:text-3xl font-bold my-4 capitalize px-4 md:px-8'>
-          Your {state.destination} itinerary
+        <h1 className='text-2xl sm:text-5xl md:text-5xl  my-4 capitalize px-4 md:px-8  font-extrabold'>
+          Your <span className='text-[#067d79]'>{state.destination}</span>{' '}
+          itinerary
         </h1>
-        <h2 className='text-lg sm:text-xl md:text-2xl font-bold mb-4 capitalize px-4 md:px-8'>
+        <h2 className='text-lg sm:text-xl md:text-2xl font-semibold mb-4 capitalize px-4 md:px-8'>
           Total {state.itinerary.totalDays} Days
         </h2>
 
@@ -69,7 +70,7 @@ const Itinerary = () => {
           <p className='text-lg sm:text-xl md:text-2xl font-extrabold text-gray-900'>
             ₹ {state.itinerary.actualBudget}
           </p>
-          <p className='text-xs sm:text-sm text-gray-600 my-1'>
+          <p className='text-xs sm:text-sm text-gray-600 my-1 font-medium'>
             Estimated total expense for your selected trip.
           </p>
         </div>
@@ -80,7 +81,7 @@ const Itinerary = () => {
       </Suspense>
 
       <button
-        className='w-full bg-[#067d79] hover:bg-[#006865] text-white mt-5 py-3 rounded-lg font-medium transition cursor-pointer text-sm sm:text-base'
+        className='w-full bg-[#067d79] hover:bg-[#009f9a] text-white mt-5 py-3 rounded-lg font-medium transition cursor-pointer text-sm sm:text-base'
         onClick={() => navigate('/planTrip')}
       >
         Update

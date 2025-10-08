@@ -1,8 +1,9 @@
+import { Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className='bg-white/70 backdrop-blur-xl rounded-2xl shadow-lg dark:bg-gray-900/50 m-4'>
+    <footer className='bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl dark:bg-gray-900/50 m-4'>
       <div className='w-full max-w-screen-xl mx-auto p-6 md:py-8'>
         <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-0'>
           {/* Logo */}
@@ -52,10 +53,16 @@ const Footer = () => {
             to='/'
             className='font-semibold hover:text-[#067d79] transition-colors duration-300'
           >
-            Journezy™
+            Journezy™{' '}
           </Link>
-          . All rights reserved.
+          All rights reserved.
         </span>
+      </div>
+      <div className='flex items-center justify-center gap-1 py-4 bg-gray-900 text-gray-400 text-sm rounded-b-2xl'>
+        Developed with{' '}
+        <Heart className='w-4 h-4 text-red-500 fill-red-500 animate-pulse' />
+        by
+        <span className='text-white font-semibold'>Satyam Sharma</span>
       </div>
     </footer>
   );

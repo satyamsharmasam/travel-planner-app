@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
 import { useGenerateItineraryMutation } from '../../../redux/services/apiSlice';
 import { GiTempleDoor } from 'react-icons/gi';
@@ -16,6 +16,8 @@ import {
   FaLandmark,
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+
+const InfiniteScrollCards = lazy(() => import('../Reviews'));
 
 const TripPlannerForm = () => {
   const {
@@ -70,7 +72,6 @@ const TripPlannerForm = () => {
       if (!text) return console.error('No text found', res);
       text = text.replace(/```(json)?/g, '').trim();
       const parsed = JSON.parse(text);
-      console.log(parsed);
       navigate('/itinerary', {
         state: { itinerary: parsed, destination, fromDate, toDate, error },
       });
@@ -81,10 +82,9 @@ const TripPlannerForm = () => {
   };
 
   return (
-    <div className='w-full'>
+    <div className='w-full relative'>
       {/* HERO SECTION */}
       <section className='relative h-[73vh] w-full flex items-center justify-center overflow-hidden'>
-        {/* Background */}
         <div className='absolute inset-0'>
           <img
             src='/images/mountains.webp'
@@ -94,13 +94,9 @@ const TripPlannerForm = () => {
           />
           <div className='absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent' />
         </div>
-
-        {/* Soft Glow */}
         <div className='absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#00a7a1]/25 blur-[150px] rounded-full animate-softPulse pointer-events-none'></div>
-
-        {/* Text */}
         <div className='relative z-10 text-center px-6'>
-          <h1 className='text-white text-5xl md:text-7xl font-extrabold  leading-tight animate-fadeUp'>
+          <h1 className='text-white text-5xl md:text-7xl font-extrabold leading-tight animate-fadeUp'>
             Plan Your{' '}
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-[#06b2ae] to-[#024e4c]'>
               Perfect Trip
@@ -111,53 +107,30 @@ const TripPlannerForm = () => {
             itinerary
           </p>
         </div>
-
-        {/* Animations */}
         <style>{`
-    @keyframes bgDrift {
-      0% { transform: scale(1.05) translateY(0); }
-      50% { transform: scale(1.1) translateY(-10px); }
-      100% { transform: scale(1.05) translateY(0); }
-    }
-    .animate-bgDrift {
-      animation: bgDrift 10s ease-in-out infinite;
-    }
+          @keyframes bgDrift {
+            0% { transform: scale(1.05) translateY(0); }
+            50% { transform: scale(1.1) translateY(-10px); }
+            100% { transform: scale(1.05) translateY(0); }
+          }
+          .animate-bgDrift { animation: bgDrift 10s ease-in-out infinite; }
 
-    @keyframes softPulse {
-      0%, 100% { opacity: 0.4; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(1.08); }
-    }
-    .animate-softPulse {
-      animation: softPulse 8s ease-in-out infinite;
-    }
+          @keyframes softPulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.08); }
+          }
+          .animate-softPulse { animation: softPulse 8s ease-in-out infinite; }
 
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fadeUp {
-      animation: fadeUp 1.2s ease forwards;
-    }
-    .delay-300 {
-      animation-delay: 0.3s;
-    }
-  `}</style>
+          @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fadeUp { animation: fadeUp 1.2s ease forwards; }
+          .delay-300 { animation-delay: 0.3s; }
+        `}</style>
       </section>
 
-      {/* FORM SECTION */}
-      <section
-        id='trip-form'
-        className='
-    relative z-20
-    -mt-12 md:-mt-20 lg:-mt-24
-    px-4 md:px-8
-    transition-all duration-500
-  '
-      >
-        {/* your form content here */}
-      </section>
-
-      {/* Trip Form */}
+      {/* Trip Form Section */}
       <section
         id='trip-form'
         className='max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-lg -mt-20 relative z-20'
@@ -165,15 +138,14 @@ const TripPlannerForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} id='form'>
           {/* Destination */}
           <div className='relative mb-6'>
-            <label className='flex items-center gap-2  font-medium mb-2'>
-              <FaMapMarkerAlt className='text-[#067d79]' />
-              Destination
+            <label className='flex items-center gap-2 font-medium mb-2'>
+              <FaMapMarkerAlt className='text-[#067d79]' /> Destination
             </label>
             <input
               type='text'
               {...register('destination', { required: 'Destination required' })}
               placeholder='Type destination'
-              className='w-full border  rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#067d79]'
+              className='w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#067d79]'
             />
             {errors.destination && (
               <p className='text-[#ff2f00] text-xs mt-1'>
@@ -185,13 +157,13 @@ const TripPlannerForm = () => {
           {/* Travel Dates */}
           <div className='mb-6 grid grid-cols-1 md:grid-cols-2 gap-4'>
             <div>
-              <label className='flex items-center gap-2  font-medium mb-2'>
+              <label className='flex items-center gap-2 font-medium mb-2'>
                 <FaCalendarAlt className='text-[#067d79]' /> From Date
               </label>
               <input
                 type='date'
                 {...register('fromDate', { required: 'From date is required' })}
-                className='w-full border  rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#067d79]'
+                className='w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#067d79]'
               />
               {errors.fromDate && (
                 <p className='text-[#ff2f00] text-xs mt-1'>
@@ -207,7 +179,7 @@ const TripPlannerForm = () => {
               <input
                 type='date'
                 {...register('toDate', { required: 'To date is required' })}
-                className='w-full border  rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#067d79]'
+                className='w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#067d79]'
               />
               {errors.toDate && (
                 <p className='text-[#ff2f00] text-xs mt-1'>
@@ -282,7 +254,7 @@ const TripPlannerForm = () => {
             )}
           </div>
 
-          {/* Button */}
+          {/* Submit Button */}
           <button
             type='submit'
             disabled={isLoading}
@@ -293,7 +265,7 @@ const TripPlannerForm = () => {
               : 'Generate Itinerary ✨'}
           </button>
           {error && (
-            <p className='text-[#ff2f00]'>Error generating itinerary</p>
+            <p className='text-[#ff2f00] mt-2'>Error generating itinerary</p>
           )}
         </form>
       </section>
@@ -335,6 +307,31 @@ const TripPlannerForm = () => {
           </div>
         </div>
       </section>
+
+      {/* Reviews Section */}
+      <Suspense
+        fallback={<div className='text-center py-6'>Loading reviews...</div>}
+      >
+        <InfiniteScrollCards />
+      </Suspense>
+
+      {/* Page freeze overlay */}
+      {isLoading && (
+        <div className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center'>
+          <div className='text-white text-center'>
+            <p className='text-lg font-semibold mb-2'>
+              Generating your itinerary...
+            </p>
+            <div className='loader border-t-4 border-b-4 border-white w-12 h-12 rounded-full animate-spin mx-auto'></div>
+          </div>
+        </div>
+      )}
+      <style>{`
+        .loader {
+          border-top-color: transparent;
+          border-bottom-color: transparent;
+        }
+      `}</style>
     </div>
   );
 };

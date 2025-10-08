@@ -8,6 +8,7 @@ import {
   Lightbulb,
   BedDouble,
   Bus,
+  Thermometer,
 } from 'lucide-react';
 
 // Reusable Card Wrapper
@@ -28,7 +29,9 @@ const BoxHeader = ({ children, className }) => (
 );
 
 const BoxTitle = ({ children, className }) => (
-  <h2 className={`text-base sm:text-lg font-bold w-1/2 ${className}`}>
+  <h2
+    className={`text-base sm:text-lg font-bold w-1/2 card-title  ${className}`}
+  >
     {children}
   </h2>
 );
@@ -58,21 +61,21 @@ const Card = ({ plan }) => {
 
     if (weather.includes('rain')) {
       weather.toLowerCase();
-      return <Cloud className='w-4 h-4 sm:w-5 sm:h-5 text-gray-500' />;
+      return <Cloud className='w-2 h-2 sm:w-5 sm:h-3 text-gray-500' />;
     }
 
     switch (weather.toLowerCase()) {
       case 'sunny':
-        return <Sun className='w-4 h-4 sm:w-5 sm:h-5 text-yellow-500' />;
+        return <Sun className='w-3 h-3 sm:w-5 sm:h-3 text-yellow-500' />;
       case 'rainy':
-        return <CloudRain className='w-4 h-4 sm:w-5 sm:h-5 text-blue-500' />;
+        return <CloudRain className='w-3 h-3 sm:w-5 sm:h-3 text-blue-500' />;
       case 'cloudy':
       case 'partly cloudy':
-        return <Cloud className='w-4 h-4 sm:w-5 sm:h-5 text-gray-500' />;
+        return <Cloud className='w-3 h-3 sm:w-5 sm:h-3 text-gray-500' />;
       case 'snow':
-        return <CloudSnow className='w-4 h-4 sm:w-5 sm:h-5 text-sky-400' />;
+        return <CloudSnow className='w-3 h-3 sm:w-5 sm:h-3 text-sky-400' />;
       default:
-        return <Sun className='w-4 h-4 sm:w-5 sm:h-5 text-yellow-400' />;
+        return <Sun className='w-3 h-3 sm:w-5 sm:h-3 text-yellow-400' />;
     }
   };
 
@@ -91,10 +94,14 @@ const Card = ({ plan }) => {
         {plan.weather && (
           <Box>
             <BoxHeader>
-              <BoxTitle className='flex items-center gap-2 w-full text-xs sm:text-sm font-semibold'>
-                {getWeatherIcon(plan.weather)} {plan.weather}
+              <BoxTitle className='flex items-center gap-2 text-sm sm:text-base'>
+                <Thermometer className='w-4 h-4 sm:w-5 sm:h-5 text-red-600' />
+                Weather
               </BoxTitle>
             </BoxHeader>
+            <BoxContent className='flex items-center gap-2 w-full text-xs sm:text-sm font-medium'>
+              {getWeatherIcon(plan.weather)} {plan.weather}
+            </BoxContent>
           </Box>
         )}
 
@@ -136,7 +143,7 @@ const Card = ({ plan }) => {
               </BoxTitle>
             </BoxHeader>
             <BoxContent>
-              <ul className='list-disc list-inside text-gray-700 space-y-1 text-xs sm:text-sm'>
+              <ul className='list-disc list-inside text-gray-700 space-y-1 text-xs sm:text-sm font-medium'>
                 {plan.foodPlaces.map((f, idx) => (
                   <li key={idx}>{f}</li>
                 ))}
@@ -155,7 +162,7 @@ const Card = ({ plan }) => {
               </BoxTitle>
             </BoxHeader>
             <BoxContent>
-              <p className='text-gray-700 text-xs sm:text-sm font-medium'>
+              <p className='text-gray-700 text-xs sm:text-sm  font-medium'>
                 {plan.stay}
               </p>
             </BoxContent>
@@ -189,7 +196,7 @@ const Card = ({ plan }) => {
               </BoxTitle>
             </BoxHeader>
             <BoxContent>
-              <ul className='list-disc list-inside text-gray-700 space-y-1 text-xs sm:text-sm'>
+              <ul className='list-disc list-inside text-gray-700 space-y-1 text-xs sm:text-sm font-medium'>
                 {plan.tips.map((t, idx) => (
                   <li key={idx}>{t}</li>
                 ))}
