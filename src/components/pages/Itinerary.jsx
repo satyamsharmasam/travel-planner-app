@@ -33,6 +33,7 @@ const Itinerary = () => {
   }
 
   const daysArray = state.itinerary.itinerary;
+  console.log(state.itinerary.itinerary);
 
   return (
     <div className='max-w-3xl mx-auto p-6'>

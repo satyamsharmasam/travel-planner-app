@@ -56,27 +56,29 @@ const Card = ({ plan }) => {
   }
 
   // Weather icon logic
+
   const getWeatherIcon = (weather) => {
     if (!weather) return null;
 
-    if (weather.includes('rain')) {
-      weather.toLowerCase();
-      return <Cloud className='w-2 h-2 sm:w-5 sm:h-3 text-gray-500' />;
+    const text = weather.toLowerCase();
+
+    if (text.includes('rain')) {
+      return <CloudRain className='w-3 h-3 sm:w-5 sm:h-3 text-blue-500' />;
     }
 
-    switch (weather.toLowerCase()) {
-      case 'sunny':
-        return <Sun className='w-3 h-3 sm:w-5 sm:h-3 text-yellow-500' />;
-      case 'rainy':
-        return <CloudRain className='w-3 h-3 sm:w-5 sm:h-3 text-blue-500' />;
-      case 'cloudy':
-      case 'partly cloudy':
-        return <Cloud className='w-3 h-3 sm:w-5 sm:h-3 text-gray-500' />;
-      case 'snow':
-        return <CloudSnow className='w-3 h-3 sm:w-5 sm:h-3 text-sky-400' />;
-      default:
-        return <Sun className='w-3 h-3 sm:w-5 sm:h-3 text-yellow-400' />;
+    if (text.includes('cloud')) {
+      return <Cloud className='w-3 h-3 sm:w-5 sm:h-3 text-gray-500' />;
     }
+
+    if (text.includes('snow') || text.includes('cold')) {
+      return <CloudSnow className='w-3 h-3 sm:w-5 sm:h-3 text-sky-400' />;
+    }
+
+    if (text.includes('sun') || text.includes('clear')) {
+      return <Sun className='w-3 h-3 sm:w-5 sm:h-3 text-yellow-500' />;
+    }
+
+    return <Sun className='w-3 h-3 sm:w-5 sm:h-3 text-yellow-400' />;
   };
 
   return (
