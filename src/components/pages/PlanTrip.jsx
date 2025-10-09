@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState, lazy, Suspense, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useGenerateItineraryMutation } from '../../../redux/services/apiSlice';
 import { GiTempleDoor } from 'react-icons/gi';
@@ -63,9 +63,20 @@ const TripPlannerForm = () => {
     },
   ]);
 
+  // Disable scrolling while loading
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isLoading]);
+
   const onSubmit = async (data) => {
     if (isLoading) return;
-
     try {
       const res = await generateItinerary(data).unwrap();
       let text = res?.candidates?.[0]?.content?.parts?.[0]?.text;
@@ -260,9 +271,7 @@ const TripPlannerForm = () => {
             disabled={isLoading}
             className='w-full bg-[#067d79] hover:bg-[#006865] cursor-pointer text-white mt-5 py-3 rounded-lg font-medium transition'
           >
-            {isLoading
-              ? 'Generating... (wait few seconds)'
-              : 'Generate Itinerary ✨'}
+            Generate Itinerary ✨
           </button>
           {error && (
             <p className='text-[#ff2f00] mt-2'>Error generating itinerary</p>
@@ -317,21 +326,21 @@ const TripPlannerForm = () => {
 
       {/* Page freeze overlay */}
       {isLoading && (
-        <div className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center'>
-          <div className='text-white text-center'>
+        <div
+          className='fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center cursor-not-allowed'
+          tabIndex={-1}
+          aria-hidden='true'
+          style={{ pointerEvents: 'all' }}
+        >
+          <div className='text-white text-center select-none'>
             <p className='text-lg font-semibold mb-2'>
               Generating your itinerary...
             </p>
-            <div className='loader border-t-4 border-b-4 border-white w-12 h-12 rounded-full animate-spin mx-auto'></div>
+            <p>Please wait a few seconds</p>
+            <div className='border-t-4 border-b-4 border-white w-12 h-12 rounded-full mt-5 animate-spin mx-auto'></div>
           </div>
         </div>
       )}
-      <style>{`
-        .loader {
-          border-top-color: transparent;
-          border-bottom-color: transparent;
-        }
-      `}</style>
     </div>
   );
 };
