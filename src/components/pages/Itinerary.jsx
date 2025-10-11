@@ -1,39 +1,46 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import Card from '../Card';
-import { AlertTriangle } from 'lucide-react';
-import SavePdfButton from '../SaveItineraryButton';
 import { Suspense, useRef } from 'react';
+import { AlertTriangle } from 'lucide-react';
+import Card from '../Card';
+import SavePdfButton from '../SaveItineraryButton';
 
 const Itinerary = () => {
+  // take reference of Itinerary div to make pdf
   const itineraryRef = useRef();
+  // state passed from planTrip page with Itinerary data
   const { state } = useLocation();
   const navigate = useNavigate();
 
+  // check if any error occur
   if (!state?.itinerary?.itinerary) {
     return (
-      <div className='text-center mt-10'>
-        <div className='flex items-center justify-center gap-3 p-4 rounded-xl bg-gradient-to-r from-red-50 to-red-100 border border-red-300 shadow-md animate-fade-in'>
-          <div className='p-2 bg-red-500 text-white rounded-full shadow-sm'>
-            <AlertTriangle size={20} />
+      <div className='flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#fdf4f4] to-[#fff] text-center px-6'>
+        <div className='relative flex flex-col items-center gap-5 p-10 rounded-3xl shadow-2xl border border-red-100 bg-white/80 backdrop-blur-sm max-w-lg w-full transition-all duration-300 hover:shadow-red-200'>
+          <div className='absolute inset-0 bg-red-100/40 blur-3xl rounded-3xl -z-10'></div>
+          <div className='p-5 bg-red-500 text-white rounded-full shadow-md animate-pulse'>
+            <AlertTriangle size={42} />
           </div>
-          <div>
-            <p className='text-red-600 text-xs sm:text-sm'>
-              {state.itinerary.error}
-            </p>
-          </div>
+          <h2 className='text-2xl sm:text-3xl font-bold text-red-700 tracking-wide'>
+            Oops! Something Went Wrong
+          </h2>
+          {/* Message */}
+          <p className='text-base font-semibold sm:text-lg text-gray-700 leading-relaxed max-w-md'>
+            {state.itinerary.error ||
+              'We couldn’t generate your travel itinerary right now. Please go back and try again.'}
+          </p>
+          <button
+            onClick={() => navigate('/planTrip')}
+            className='mt-6 px-8 py-3 bg-[#067d79] hover:bg-[#009f9a] text-white rounded-xl font-semibold text-base sm:text-lg shadow-md hover:shadow-lg transition-all duration-200'
+          >
+            Go Back
+          </button>
         </div>
-        <button
-          onClick={() => navigate('/planTrip')}
-          className='mt-4 px-4 py-2 bg-[#028e89]  text-white rounded cursor-pointer text-sm sm:text-base'
-        >
-          Go Back
-        </button>
       </div>
     );
   }
 
+  // day wise array
   const daysArray = state.itinerary.itinerary;
-  console.log(state.itinerary.itinerary);
 
   return (
     <div className='max-w-3xl mx-auto p-6'>
@@ -46,6 +53,7 @@ const Itinerary = () => {
           Total {state.itinerary.totalDays} Days
         </h2>
 
+        {/* create cards day wise */}
         {daysArray.map((dayPlan, index) => (
           <Card key={index} plan={dayPlan} />
         ))}

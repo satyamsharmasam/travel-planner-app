@@ -13,6 +13,7 @@ import { Provider } from 'react-redux';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import ScrollToTop from './components/ScrollTop.jsx';
+import Error404 from './components/pages/Error404.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -27,6 +28,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/itinerary' element={<Itinerary />} />
+          <Route path='*' element={<Error404 />} />
         </Routes>
         <Footer />
       </HashRouter>

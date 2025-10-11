@@ -2,6 +2,7 @@ import React, { useState, lazy, Suspense, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useGenerateItineraryMutation } from '../../../redux/services/apiSlice';
 import { GiTempleDoor } from 'react-icons/gi';
+import Error404 from './Error404';
 import {
   FaCalendarAlt,
   FaDollarSign,
@@ -20,6 +21,7 @@ import { useNavigate } from 'react-router-dom';
 const InfiniteScrollCards = lazy(() => import('../Reviews'));
 
 const TripPlannerForm = () => {
+  // react form hook library for handle form
   const {
     register,
     handleSubmit,
@@ -36,14 +38,19 @@ const TripPlannerForm = () => {
     },
   });
 
+  // function from rtk to make api call
   const [generateItinerary, { isLoading, error }] =
     useGenerateItineraryMutation();
   const navigate = useNavigate();
+
+  // to get current value from fields
   const destination = watch('destination');
   const fromDate = watch('fromDate');
   const toDate = watch('toDate');
 
   const [openIndex, setOpenIndex] = useState(null);
+
+  // faq aob
   const [faqs] = useState([
     {
       q: 'Can I edit my itinerary later?',
@@ -77,12 +84,14 @@ const TripPlannerForm = () => {
 
   const onSubmit = async (data) => {
     if (isLoading) return;
+    // get data from api
     try {
       const res = await generateItinerary(data).unwrap();
       let text = res?.candidates?.[0]?.content?.parts?.[0]?.text;
       if (!text) return console.error('No text found', res);
       text = text.replace(/```(json)?/g, '').trim();
       const parsed = JSON.parse(text);
+      // navigate to itinerary page with data
       navigate('/itinerary', {
         state: { itinerary: parsed, destination, fromDate, toDate, error },
       });
@@ -273,9 +282,7 @@ const TripPlannerForm = () => {
           >
             Generate Itinerary ✨
           </button>
-          {error && (
-            <p className='text-[#ff2f00] mt-2'>Error generating itinerary</p>
-          )}
+          {error && navigate('*')}
         </form>
       </section>
 

@@ -1,8 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const apiKey = import.meta.env.VITE_GEMINI_KEY;
-const MODEL = 'gemini-2.5-flash'; // <-- update model here
+// current model used
+const MODEL = 'gemini-2.5-flash';
 
+// fetch data by
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
@@ -22,6 +24,7 @@ export const apiSlice = createApi({
               ) + 1
             : 0;
 
+        // prompt send to ai
         const prompt = `
 You are a strict travel planner AI.
 You MUST respond in **valid JSON only** without any extra text or explanation.
@@ -41,7 +44,7 @@ Rules:
    {
      "status": "error",
      "minRequiredBudget": null,
-     "error": "Destination '${destination}' is not recognized or supported. Trip cannot be planned."
+     "error": "Destination '${destination}' is not recognized or supported. Trip cannot be planned. Enter valid Destination"
    }
    - All real countries, cities, states, islands, landmarks worldwide are valid.
 

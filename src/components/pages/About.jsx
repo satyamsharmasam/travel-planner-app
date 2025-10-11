@@ -9,12 +9,14 @@ const fadeInUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
 
+// breathing bg style
 const breathingBackground = {
   background: 'linear-gradient(180deg, #ffffff, #f0fdfa, #e6fffa)',
   backgroundSize: '400% 400%',
   animation: 'breathing 15s ease-in-out infinite',
 };
 
+// function for breathing bg
 export default function AboutBreathingFull() {
   return (
     <div
@@ -109,7 +111,7 @@ export default function AboutBreathingFull() {
       {/* Call to Action */}
       <section className='py-5 text-center'>
         <Link
-          to={'/plantrip'}
+          to={'/planTrip'}
           className='inline-block px-14 py-5 bg-gradient-to-r from-[#067d79] to-[#024e4c] text-white font-semibold rounded-full shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300'
         >
           Start Your New Journey

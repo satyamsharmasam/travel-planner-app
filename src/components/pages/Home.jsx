@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import HeroSection from '../HeroSection';
 import { StickyScroll } from '../ui/sticky-scroll-reveal';
 
+// slider content
 const content = [
   {
     title: 'Bali',
@@ -108,7 +109,7 @@ const Home = () => {
         <h2 className=' text-5xl font-semibold'>
           Dream destinations, just a{' '}
           <Link
-            to={'/plantrip'}
+            to={'/planTrip'}
             className='text-[#067d79] animate-pulse  inline-block'
           >
             click
