@@ -1,8 +1,7 @@
-import React, { useState, lazy, Suspense, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useGenerateItineraryMutation } from '../../../redux/services/apiSlice';
 import { GiTempleDoor } from 'react-icons/gi';
-import Error404 from './Error404';
 import {
   FaCalendarAlt,
   FaDollarSign,
@@ -17,8 +16,6 @@ import {
   FaLandmark,
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-
-const InfiniteScrollCards = lazy(() => import('../Reviews'));
 
 const TripPlannerForm = () => {
   // react form hook library for handle form
@@ -323,13 +320,6 @@ const TripPlannerForm = () => {
           </div>
         </div>
       </section>
-
-      {/* Reviews Section */}
-      <Suspense
-        fallback={<div className='text-center py-6'>Loading reviews...</div>}
-      >
-        <InfiniteScrollCards />
-      </Suspense>
 
       {/* Page freeze overlay */}
       {isLoading && (
